@@ -21,22 +21,28 @@
       "name": "Call to Action",
       "settings": {
         "pre-order-title": "Pre-order now!",
-        "pre-order-text": "Enter text here",
-        // "padding_bottom": 280
+        "pre-order-text": "Enter text here"
       }
     },
-    "call_to_action_Cz8MpV": {
-      "type": "call-to-action",
-      "name": "Call to Action",
+    "video_tMgnBx": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
       "settings": {
-        "pre-order-title": "Pre-order now!",
-        "pre-order-text": "Enter text here",
-        // "padding_bottom": 280
+        "heading": "Video",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "main",
-    "call_to_action_Cz8MpV"
+    "call_to_action_Cz8MpV",
+    "video_tMgnBx"
   ]
 }
