@@ -24,6 +24,15 @@
         "pre-order-text": "Enter text here",
         // "padding_bottom": 280
       }
+    },
+    "call_to_action_Cz8MpV": {
+      "type": "call-to-action",
+      "name": "Call to Action",
+      "settings": {
+        "pre-order-title": "Pre-order now!",
+        "pre-order-text": "Enter text here",
+        // "padding_bottom": 280
+      }
     }
   },
   "order": [
