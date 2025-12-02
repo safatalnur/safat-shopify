@@ -21,7 +21,8 @@
       "name": "Call to Action",
       "settings": {
         "pre-order-title": "Pre-order now!",
-        "pre-order-text": "Enter text here"
+        "pre-order-text": "Enter text here",
+        // "padding_bottom": 280
       }
     }
   },
