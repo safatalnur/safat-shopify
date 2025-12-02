@@ -80,7 +80,9 @@
     "simple_section_jrXXV9": {
       "type": "simple-section",
       "name": "Simple section",
-      "settings": {}
+      "settings": {
+        "heading": "Hello My Custom"
+      }
     }
   },
   "order": [
