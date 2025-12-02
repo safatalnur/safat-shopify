@@ -76,10 +76,16 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "simple_section_jrXXV9": {
+      "type": "simple-section",
+      "name": "Simple section",
+      "settings": {}
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "simple_section_jrXXV9"
   ]
 }
