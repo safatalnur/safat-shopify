@@ -1,0 +1,283 @@
+{% schema %}
+{
+    "name": "Image With Logo & Text",
+    "tag": "section",
+    "class": "img-logo-txt-contents",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background Image"
+        },
+        {
+            "type": "select",
+            "id": "content_size",
+            "label": "Content Max Width",
+            "default": "1440px",
+            "options": [
+                {
+                    "value": "1440px",
+                    "label": "1440px"
+                },
+                {
+                    "value": "1240px",
+                    "label": "1240px"
+                },
+                {
+                    "value": "1140px",
+                    "label": "1140px"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "content_background_color",
+            "label": "Content Background Color",
+        },
+        {
+            "type": "range",
+            "id": "content_background_opacity",
+            "label": "Content Background Opacity",
+            "min": 0,
+            "max": 1,
+            "step": 0.1,
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Section Contents"
+        },
+        {
+            "type": "select",
+            "id": "content_position",
+            "label": "Content Position",
+            "default": "middle_center",
+            "options": [
+                {
+                    "value": "top_left",
+                    "label": "Top left"
+                },
+                {
+                    "value": "top_center",
+                    "label": "Top center"
+                },
+                {
+                    "value": "top_right",
+                    "label": "Top right"
+                },
+                {
+                    "value": "middle_left",
+                    "label": "Middle left"
+                },
+                {
+                    "value": "middle_center",
+                    "label": "Middle center"
+                },
+                {
+                    "value": "middle_right",
+                    "label": "Middle right"
+                },
+                {
+                    "value": "bottom_left",
+                    "label": "Bottom left"
+                },
+                {
+                    "value": "bottom_center",
+                    "label": "Bottom center"
+                },
+                {
+                    "value": "bottom_right",
+                    "label": "Bottom right"
+                }
+            ]
+        },
+        {
+            "type": "image_picker",
+            "id": "logo_image",
+            "label": "Logo Image"
+        },
+        {
+            "type": "text",
+            "id": "logo_alt",
+            "label": "Logo alt",
+            "default": "Please describe the image"
+        },
+        {
+            "type": "range",
+            "id": "logo_width",
+            "min": 5,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "Logo width",
+            "default": 10
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "richtext",
+            "label": "Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "logo_salad_image",
+            "label": "Logo Salad Image"
+        },
+        {
+            "type": "text",
+            "id": "logo_salad_alt",
+            "label": "Logo Salad alt",
+            "default": "Please describe the image"
+        },
+        {
+            "type": "range",
+            "id": "logo_salad_width",
+            "min": 5,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "Logo Salad width",
+            "default": 10
+        },
+    ],
+    "presets": [
+        {
+            "name": "Image With Logo & Text",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}
+<div class="img-logo-txt-container img-logo-txt-{{ section.id }} {{ section.settings.content_position }}">
+    <div class="img-logo-txt-card">
+        {% assign hex = section.settings.content_background_color | remove: '#' %}
+        {% assign bg_color_value = section.settings.content_background_color | downcase %}
+        {%- assign r = hex | slice:0,2 | prepend: '0x' | plus: 0 -%}
+        {%- assign g = hex | slice:2,2 | prepend: '0x' | plus: 0 -%}
+        {%- assign b = hex | slice:4,2 | prepend: '0x' | plus: 0 -%}
+        <div class="img-logo-txt-inner">
+            {% if section.settings.logo_image != blank %}
+            <img 
+                src="{{ section.settings.logo_image | image_url }}" 
+                alt="{{ section.settings.logo_alt }}"
+                width="{{ section.settings.logo_width }}"
+                height="auto"
+                class="logo-img"
+            >
+            {% endif %}
+            {% if section.settings.heading != blank %}
+            <h1>{{ section.settings.heading }}</h1>
+            {% endif %}
+            {% if section.settings.richtext != blank %}
+            <p>{{ section.settings.richtext }}</p>
+            {% endif %}
+            {% if section.settings.logo_salad_image != blank %}
+            <div class="logo-salad-container">
+                <img
+                    src="{{ section.settings.logo_salad_image | image_url }}"
+                    alt="{{ section.settings.logo_salad_alt }}"
+                    width="{{ section.settings.logo_salad_width }}"
+                    height="auto"
+                    class="logo-salad-img"
+                >
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .img-logo-txt-{{ section.id }}.img-logo-txt-container {
+        height: 80vh;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ section.settings.background_image | image_url }}'); 
+        background-repeat: no-repeat; 
+        background-position: center; 
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        {% comment %} justify-content: center;
+        align-items: center; {% endcomment %}
+    }
+    .img-logo-txt-{{ section.id }} .img-logo-txt-inner {
+        max-width: {{ section.settings.content_size }}!important;
+    }
+    .img-logo-txt-{{ section.id }}.top_left {
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .img-logo-txt-{{ section.id }}.top_center {
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+    .img-logo-txt-{{ section.id }}.top_right {
+        justify-content: flex-start;
+        align-items: flex-end;
+        text-align: right;
+    }
+    .img-logo-txt-{{ section.id }}.middle_left {
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .img-logo-txt-{{ section.id }}.middle_center {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .img-logo-txt-{{ section.id }}.middle_right {
+        justify-content: center;
+        align-items: flex-end;
+        text-align: right;
+    }
+    .img-logo-txt-{{ section.id }}.bottom_left {
+        justify-content: flex-end;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .img-logo-txt-{{ section.id }}.bottom_center {
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+    }
+    .img-logo-txt-{{ section.id }}.bottom_right {
+        justify-content: flex-end;
+        align-items: flex-end;
+        text-align: right;
+    }
+    .img-logo-txt-{{ section.id }} .img-logo-txt-card {
+        {% comment %} width: 1440px; {% endcomment %}
+        width: 100%;
+        max-width: 1440px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        {% unless bg_color_value == blank or bg_color_value == 'none' or bg_color_value == 'transparent' %}
+            background-color: rgba({{ r }}, {{ g }}, {{ b }}, {{ section.settings.content_background_opacity }});
+        {% endunless %}
+        padding: 100px 6%;
+    }
+    .img-logo-txt-{{ section.id }} .img-logo-txt-card .logo-img {
+        width: {{ section.settings.logo_width }}% !important;
+    }
+    .img-logo-txt-{{ section.id }} .img-logo-txt-card div .logo-salad-img {
+        width: {{ section.settings.logo_salad_width }}% !important;
+    }
+    .img-logo-txt-{{ section.id }} .img-logo-txt-card h1,
+    .img-logo-txt-{{ section.id }} .img-logo-txt-card p {
+        color: #fff;
+    }
+    .logo-salad-container {
+        padding-top: 40px;
+    }
+    @media (min-width: 769px) {
+        .img-logo-txt-{{ section.id }} .img-logo-txt-card {
+            padding: 100px;
+        }
+    }
+</style>
