@@ -112,7 +112,7 @@
           "settings": {
             "image": "shopify://shop_images/NAD_BluOS_Header.png",
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p>Hello there</p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p><a href=\"/products/black-leather-bag\" title=\"Black Leather Bag\">Hello there</a></p>",
             "link_label": "Hello World",
             "link": ""
           }
