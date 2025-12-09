@@ -90,9 +90,9 @@
       "name": "Image With Logo & Text",
       "settings": {
         "background_image": "shopify://shop_images/putting-on-your-shoes_925x_dd679630-a594-4674-858a-8b41009bb312.jpg",
-        "content_size": "1440px",
-        "content_background_color": "",
-        "content_background_opacity": 0,
+        "content_size": "1240px",
+        "content_background_color": "#000000",
+        "content_background_opacity": 0.6,
         "content_position": "middle_center",
         "logo_image": "shopify://shop_images/BluOS_Enabled_Ready_Logo_ENABLED_WHT.png",
         "logo_alt": "Please describe the image",
